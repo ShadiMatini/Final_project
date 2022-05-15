@@ -1,0 +1,67 @@
+13:46:35 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\Student\Documents\Final_project1\software\temp_xsdb_launch_script.tcl
+13:46:36 INFO  : Registering command handlers for Vitis TCF services
+13:46:36 INFO  : Platform repository initialization has completed.
+13:46:43 INFO  : XSCT server has started successfully.
+13:46:48 INFO  : Successfully done setting XSCT server connection channel  
+13:46:48 INFO  : plnx-install-location is set to ''
+13:46:48 INFO  : Successfully done query RDI_DATADIR 
+13:46:48 INFO  : Successfully done setting workspace for the tool. 
+13:48:01 INFO  : Result from executing command 'getProjects': dma_platform
+13:48:01 INFO  : Result from executing command 'getPlatforms': 
+13:52:07 INFO  : Result from executing command 'removePlatformRepo': 
+13:53:39 INFO  : Result from executing command 'getProjects': dma_platform
+13:53:39 INFO  : Result from executing command 'getPlatforms': 
+13:53:39 INFO  : Checking for BSP changes to sync application flags for project 'dma_host'...
+13:56:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:57:39 INFO  : Jtag cable 'Digilent Zybo Z7 210351B3FC96A' is selected.
+13:58:56 INFO  : 'jtag frequency' command is executed.
+13:58:56 INFO  : Context for 'APU' is selected.
+13:58:56 INFO  : System reset is completed.
+13:58:59 INFO  : 'after 3000' command is executed.
+14:00:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B3FC96A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B3FC96A-13722093-0"}' command is executed.
+14:00:15 INFO  : Device configured successfully with "C:/Users/Student/Documents/Final_project1/software/dma_host/_ide/bitstream/design_1_wrapper.bit"
+14:00:15 INFO  : Context for 'APU' is selected.
+14:01:33 INFO  : Hardware design and registers information is loaded from 'C:/Users/Student/Documents/Final_project1/software/dma_platform/export/dma_platform/hw/design_1_wrapper.xsa'.
+14:01:33 INFO  : 'configparams force-mem-access 1' command is executed.
+14:01:33 INFO  : Context for 'APU' is selected.
+14:01:33 INFO  : Sourcing of 'C:/Users/Student/Documents/Final_project1/software/dma_host/_ide/psinit/ps7_init.tcl' is done.
+14:15:49 INFO  : 'ps7_init' command is executed.
+14:15:49 INFO  : 'ps7_post_config' command is executed.
+14:15:49 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:17:07 INFO  : The application 'C:/Users/Student/Documents/Final_project1/software/dma_host/Debug/dma_host.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:18:25 INFO  : 'configparams force-mem-access 0' command is executed.
+14:18:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B3FC96A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B3FC96A-13722093-0"}
+fpga -file C:/Users/Student/Documents/Final_project1/software/dma_host/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/Student/Documents/Final_project1/software/dma_platform/export/dma_platform/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/Student/Documents/Final_project1/software/dma_host/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/Student/Documents/Final_project1/software/dma_host/Debug/dma_host.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:22:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:22:18 INFO  : 'con' command is executed.
+14:22:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+14:22:18 INFO  : Launch script is exported to file 'C:\Users\Student\Documents\Final_project1\software\dma_host_system\_ide\scripts\debugger_dma_host-default.tcl'
+22:58:55 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\Student\Documents\Final_project1\software\temp_xsdb_launch_script.tcl
+22:59:10 INFO  : XSCT server has started successfully.
+22:59:10 INFO  : plnx-install-location is set to ''
+22:59:10 INFO  : Successfully done setting XSCT server connection channel  
+22:59:10 INFO  : Successfully done setting workspace for the tool. 
+22:59:16 INFO  : Platform repository initialization has completed.
+22:59:18 INFO  : Registering command handlers for Vitis TCF services
+22:59:25 INFO  : Successfully done query RDI_DATADIR 
